@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-
+// Comment schema for Campground model ref User model
 var commentSchema = mongoose.Schema({
   comment: {type: String, required: true},
   createdAt: {type:Date, default: Date.now},

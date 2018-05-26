@@ -1,5 +1,12 @@
 var mongoose = require('mongoose');
-
+/*
+Creates a mongoose campground schema with fields
+name, price, image, imageId, location lat, lng, description, createdAt
+imageId: image id returns from cloudinary api for a particular image
+image: image url returns from cloudinary api for a particular image
+comments: Ref Comment model 
+author: ref User model
+*/
 var camgroundSchema = mongoose.Schema({
   name: {type:String, required: true },
   price: {type: Number, required: true},

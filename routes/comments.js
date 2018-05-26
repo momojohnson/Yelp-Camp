@@ -1,8 +1,8 @@
-var express = require('express'),
-    router = express.Router({mergeParams: true}),
-    Campground = require('../models/campgrounds'),
-    Comment = require('../models/comments'),
-    middleware = require('../middleware/index');
+var express = require('express'), // Express
+    router = express.Router({mergeParams: true}),  // Express router
+    Campground = require('../models/campgrounds'), // Campground
+    Comment = require('../models/comments'), // Comment
+    middleware = require('../middleware/index'); // Middleware
 
 // Display form for the creation of a new comment at /campgrounds/:id/comments/new
 router.get('/new', middleware.isLogin, function(req, res){
@@ -15,7 +15,8 @@ router.get('/new', middleware.isLogin, function(req, res){
     res.render('comments/new_comment', {campground:campground, title:'New comment'})
   });
 });
-
+// Handles the creation of a comment and adds a comment to a particular campgrounds
+// at route /campgrounds/id/comments
 router.post('/', middleware.isLogin, function(req, res){
   Campground.findById(req.params.id, function(err, campground){
     if(err){
@@ -45,7 +46,7 @@ router.post('/', middleware.isLogin, function(req, res){
     });
   });
 });
-
+// Renders form for editing of a campground at route /campgrounds/campground_id/comment_id/edit
 router.get('/:comment_id/edit', middleware.checkCommentOwnership, function(req, res){
   Campground.findById(req.params.id, function(err, campground){
     if(err){
