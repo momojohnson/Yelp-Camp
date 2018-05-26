@@ -1,8 +1,9 @@
 // Middleware for this application
-var Campgrounds = require("../models/campgrounds");
-var Comment = require("../models/comments")
+var Campgrounds = require("../models/campgrounds"); // Campground module
+var Comment = require("../models/comments") // Comment module
 
 var middlewareObj = {};
+// Check a user ownership of a partical campground
 middlewareObj.checkCampgroundOwnership = function(req, res, next){
      if(req.isAuthenticated()){
         Campgrounds.findById(req.params.id, function(err, campground){
@@ -23,7 +24,7 @@ middlewareObj.checkCampgroundOwnership = function(req, res, next){
         res.redirect('/account/login')
     }
 }
-
+// Check user ownership of a particular comment
 middlewareObj.checkCommentOwnership = function(req, res, next){
     if(req.isAuthenticated()){
         Campgrounds.findById(req.params.id, function(err, campground){
@@ -56,7 +57,7 @@ middlewareObj.checkCommentOwnership = function(req, res, next){
     }
 
 }
-
+// Check if a user has been authenticated before allowing them to access certain routes
 middlewareObj.isLogin = function(req, res, next){
     if(req.isAuthenticated()){
         return next()
