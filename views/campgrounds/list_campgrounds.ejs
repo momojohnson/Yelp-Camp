@@ -1,0 +1,17 @@
+<% include ../partials/header %>
+<% include ../partials/jumbotron %>
+<div class="container">
+<div class="row">
+  <% campgrounds.forEach(function(campground){%>
+  <div class="col-md-4">
+  <figure class="figure">
+  <img src="<%= campground.image %>" class="figure-img img-fluid img-thumbnail" alt="Campground image.">
+  <figcaption class="figure-caption text-center text-dark font-weight-bold"><%= campground.name %><a class="btn btn-primary btn-sm float-right" href="/campgrounds/<%= campground._id %>">view more</a></figcaption>
+ </figure>
+  </div>
+  <%})%>
+</div>
+</div>
+
+<% include ../partials/footer %>
+<% include ../partials/scripts %>

@@ -1,0 +1,16 @@
+
+<header class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4 text-center">Camp Grounds</h1>
+    <% if(currentUser && currentUser.isAdmin) {%>
+    <p class="lead">Welcome to Yelp Camp Admin. <%= currentUser.username %></p>
+     <p class="text-center"><a href="/" class=" btn btn-primary btn-lg">Go to home page</a> <a href="/campgrounds/new" class=" btn btn-primary btn-lg">Add new campground</a></p>
+    <% } else if(currentUser){%>
+    <h2 class="text-center mb-4">Welcome to Yelp Camp <strong><%= currentUser.name.first %> <%= currentUser.name.last %></strong></h2>
+     <p class="text-center"><a href="/" class=" btn btn-primary btn-lg">Go to home page</a> <a href="/campgrounds/new" class=" btn btn-primary btn-lg">Add new campground</a></p>
+    <%}else {%>
+      <h2 class="text-center">Welcome to Yelp Camp</h2>
+       <p class="text-center"><a href="/" class=" btn btn-primary btn-lg">Go to home page</a> <a href="/campgrounds/new" class=" btn btn-primary btn-lg">Add new campground</a></p>
+    <% } %>
+  </div>
+</header>
